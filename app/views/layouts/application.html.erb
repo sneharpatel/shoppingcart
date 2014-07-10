@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Depot</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Pragprog Books Online Store</title>
+  <!-- stylesheet_link_tag() helper method to generate a <link> tag to our application’s stylesheet and specifies an option to enable turbolinks -->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- generates a <link> to our application’s scripts -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- sets up all the behind-the-scenes data needed to prevent crosssite request forgery attacks -->
   <%= csrf_meta_tags %>
+
 </head>
 <body class='<%= controller.controller_name %>'>
+<div id="banner">
+  <%= image_tag("logo.png") %>
+  <!-- set the page heading to the value in the instance variable @page_title -->
+  <%= @page_title || "Pragmatic Bookshelf" %>
 
-<%= yield %>
+  <div id="columns">
+  </div>
 
+  <div id="side">
+    <ul>
+      <li><a href="http://www....">Home</a></li>
+      <li><a href="http://www..../faq">Questions</a></li>
+      <li><a href="http://www..../news">News</a></li>
+      <li><a href="http://www..../contact">Contact</a></li>
+    </ul>
+  </div>
+  <div id="main">
+
+    <!-- we invoke yield, Rails automatically substitutes in the page-specific content -->
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>
+
+
+
